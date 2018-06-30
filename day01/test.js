@@ -5,7 +5,7 @@ var fs = require('fs');
 var passed = 0;
 
 countStream.on('total', function (count) {
-    assert.equal(count, 1);
+    assert.equal(count, 1);// 无返回值，如果不限等抛出异常
     passed++;
 });
 
