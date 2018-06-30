@@ -11,6 +11,7 @@ countStream.on('total', function (count) {
 
 fs.createReadStream(__filename).pipe(countStream);
 
-process.on('exit', function () {
+process.on('exit', function (msg) {
+    // console.log(msg);
     console.log('Assertion passed:', passed);
 });
