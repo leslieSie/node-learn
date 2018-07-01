@@ -8,15 +8,15 @@ function CountStream(matchText) {
 }
 // extends Writable
 
-CountStream.prototype._write = function(chunk, ending, cb) {
+CountStream.prototype._write = function (chunk, ending, cb) {
     var matches = chunk.toString().match(this.matcher);
     if (matches) {
         this.count += matches.length;
     }
     cb();
-} 
+}
 
-CountStream.prototype.end = function() {
+CountStream.prototype.end = function () {
     this.emit('total', this.count);
 }
 

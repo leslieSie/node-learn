@@ -9,6 +9,7 @@ countStream.on('total', function (count) {
     passed++;
 });
 
+console.log(__filename);
 fs.createReadStream(__filename).pipe(countStream);
 
 process.on('exit', function (msg) {
