@@ -1,16 +1,14 @@
-let writable = require('stream').Writable
+let writable = require('stream').Writable;
 let util = require('util');
 
-util.inherits(CountStream, writable); //使CountStream继承自writable
-
-function CountStream(matchText, options) {
-    writable.call(this, options);
+function CountStream(matchText) {
+    writable.call(this);
     this.count = 0;
     this.matcher = new RegExp(matchText, 'ig');
 }
 // extends Writable
 
-CountStream.prototype._write = function(chunk, ending, cb) {
+CountStream.prototype._write = function (chunk, ending, cb) {
     var matches = chunk.toString().match(this.matcher);
     if (matches) {
         this.count += matches.length;
@@ -18,8 +16,10 @@ CountStream.prototype._write = function(chunk, ending, cb) {
     cb();
 }
 
-CountStream.prototype.end = function() {
+CountStream.prototype.end = function () {
     this.emit('total', this.count);
 }
+
+util.inherits(CountStream, writable); //使CountStream继承自writable
 
 module.exports = CountStream;

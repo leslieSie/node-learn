@@ -1,8 +1,8 @@
 var CountStream = require('./countStream');
-var countStream = new CountStream('Node');
+var countStream = new CountStream('风之之');
 let http = require('http');
 
-http.get('http://www.runoob.com/nodejs/nodejs-stream.html', (res) => {
+http.get('http://www.cnblogs.com/fzz9/p/9247915.html', (res) => {
     res.pipe(countStream);
 });
 
